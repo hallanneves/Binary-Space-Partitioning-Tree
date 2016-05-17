@@ -35,15 +35,16 @@ public class Poligono {
     }
     
     public void DrawFrontal(Graphics g,int x,int y){
-        int distMax = 500;
+        int tamanho = 5000;
         int[] arrayx = {(int)(projetaXDoPontoNaTela(x1,y1)),(int)projetaXDoPontoNaTela(x2,y2),(int)projetaXDoPontoNaTela(x1,y1),(int)projetaXDoPontoNaTela(x2,y2)};
         System.out.println("Poligono: x -> ");
         for (int i = 0; i < arrayx.length; i++) {
             System.out.print(" "+arrayx[i]);
         }
-        int atuenuador = 4;
-        int arrayy[] = {100,100,400,400};
-        //int[] arrayy = {(int) (distMax/250*distancia(Bicho.xObservador,Bicho.yObservador,x1,y)),(int) (distMax/250*distancia(Bicho.xObservador,Bicho.yObservador,x2,y)),(int) (distMax/250*distancia(Bicho.xObservador,Bicho.yObservador,x1,y)),(int) -(distMax/250*distancia(Bicho.xObservador,Bicho.yObservador,x2,y))};
+        
+        double d1 = distancia(Bicho.xObservador,Bicho.yObservador,x1,y1);
+        double d2 = distancia(Bicho.xObservador,Bicho.yObservador,x2,y2);
+        int[] arrayy = {(int) (250 +(tamanho/d1)),(int) (250 + tamanho/d2),(int) (250 - tamanho/d1),(int) (250 - tamanho/d2)};
         System.out.println(" y -> ");
         for (int i = 0; i < arrayy.length; i++) {
             System.out.print(" "+arrayy[i]);
@@ -51,8 +52,7 @@ public class Poligono {
         System.out.println("");
         g.setColor(cor);
         g.fillPolygon(arrayx, arrayy ,4);
-        //g.setColor(Color.black);
-        //g.drawRect((int)Math.min(x1, x2), 200, (int)Math.max(x1,x2)- (int)Math.min(x1, x2),100);
+        
     }
     public static double distancia(double x1, double y1, double x2, double y2){
         return Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
