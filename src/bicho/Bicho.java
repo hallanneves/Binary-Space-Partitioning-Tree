@@ -25,7 +25,7 @@ public class Bicho {
 
     private static void geraPoligonos(){
         poligonos = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 1; i++) {
             Random r = new Random();
             Color cor = new Color(0.3f+r.nextFloat()*0.5f,0.3f+r.nextFloat()*0.5f,0.3f+r.nextFloat()*0.5f);
             Poligono p = new Poligono(50+r.nextDouble()*400.0,50+r.nextDouble()*400.0f,25+r.nextDouble()*100,r.nextDouble()*360.0,cor);
@@ -97,7 +97,7 @@ public class Bicho {
             gFront.fillRect(0, 0, 500, 500);
             drawFrontalArvore(arvore, gFront);
             
-            Thread.sleep(100);
+            Thread.sleep(200);
         }
     }
     

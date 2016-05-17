@@ -35,23 +35,31 @@ public class Poligono {
     }
     
     public void DrawFrontal(Graphics g,int x,int y){
-        int distMax = 500;
-        int[] arrayx = {(int)(projetaXDoPontoNaTela(x1,y1)),(int)projetaXDoPontoNaTela(x2,y2),(int)projetaXDoPontoNaTela(x1,y1),(int)projetaXDoPontoNaTela(x2,y2)};
+        int tamanho = 5000;
+        int x1Proj, x2Proj;
+        if (!visivel(x1, y1) && !visivel(x2,y2)){
+            return;
+        }
+        x1Proj = (int)projetaXDoPontoNaTela(x1,y1);
+        x2Proj = (int)projetaXDoPontoNaTela(x2,y2);
+        
+        int[] arrayx = {x1Proj,x2Proj,x2Proj,x1Proj};
         System.out.println("Poligono: x -> ");
         for (int i = 0; i < arrayx.length; i++) {
             System.out.print(" "+arrayx[i]);
         }
-        int atuenuador = 4;
-        int arrayy[] = {100,100,400,400};
         
+        double d1 = distancia(Bicho.xObservador,Bicho.yObservador,x1,y1);
+        double d2 = distancia(Bicho.xObservador,Bicho.yObservador,x2,y2);
+        int[] arrayy = {(int) (250 +(tamanho/d1)),(int) (250 + tamanho/d2),(int) (250 - tamanho/d2),(int) (250 - tamanho/d1)};
+        System.out.println(" y -> ");
         for (int i = 0; i < arrayy.length; i++) {
             System.out.print(" "+arrayy[i]);
         }
         System.out.println("");
         g.setColor(cor);
         g.fillPolygon(arrayx, arrayy ,4);
-        //g.setColor(Color.black);
-        //g.drawRect((int)Math.min(x1, x2), 200, (int)Math.max(x1,x2)- (int)Math.min(x1, x2),100);
+        
     }
     public static double distancia(double x1, double y1, double x2, double y2){
         return Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
@@ -65,13 +73,26 @@ public class Poligono {
         xVetorObjeto = x-Bicho.xObservador;
         yVetorObjeto = y - Bicho.yObservador;
         double angulo = anguloEntreVetores(xVetorObjeto, yVetorObjeto, xVetorObservador, yVetorObservador);
-        if (angulo < 0.0){
+        System.out.println("angulo que foi calculado "+angulo);
+        if (xVetorObservador*yVetorObjeto - xVetorObjeto*yVetorObservador < 0){
             return  -1;
         }
         if(angulo >90.0){
-            return 401;
+            return 501;
         }
+        System.out.println("projecao calculada para um angulo de "+angulo+" = "+(int)((500.0/90.0)*angulo));
         return (int)((500.0/90.0)*angulo);
+    }
+    
+    public static boolean visivel(double x, double y){
+        double xVetorObservador, yVetorObservador;
+        xVetorObservador = Math.cos(Math.toRadians(Bicho.anguloObservador-45));
+        yVetorObservador = Math.sin(Math.toRadians(Bicho.anguloObservador-45));
+        double xVetorObjeto, yVetorObjeto;
+        xVetorObjeto = x-Bicho.xObservador;
+        yVetorObjeto = y - Bicho.yObservador;
+        double angulo = anguloEntreVetores(xVetorObjeto, yVetorObjeto, xVetorObservador, yVetorObservador);
+        return (xVetorObservador*yVetorObjeto - xVetorObjeto*yVetorObservador > 0 && angulo < 90);
     }
     
     //radianos
