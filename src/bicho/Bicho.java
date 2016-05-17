@@ -37,7 +37,7 @@ public class Bicho {
     private static void drawSuperior(Graphics g){       
         drawObservador(g);
         for (Poligono poligono : poligonos) {
-            poligono.Draw(g);
+            poligono.draw(g);
         }
     }
     

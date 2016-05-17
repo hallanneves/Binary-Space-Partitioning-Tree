@@ -25,7 +25,7 @@ public class Poligono {
         return (p.y-y)-Math.tan(Math.toRadians(angulo+90))*(p.x-x) > 0;
     }
 
-    public void Draw(Graphics g){
+    public void draw(Graphics g){
         g.setColor(cor);
         g.drawLine( (int)x1, (int)y1, (int)x2, (int)y2);
         double anguloRad = Math.toRadians(angulo);
@@ -43,8 +43,7 @@ public class Poligono {
         }
         int atuenuador = 4;
         int arrayy[] = {100,100,400,400};
-        //int[] arrayy = {(int) (distMax/250*distancia(Bicho.xObservador,Bicho.yObservador,x1,y)),(int) (distMax/250*distancia(Bicho.xObservador,Bicho.yObservador,x2,y)),(int) (distMax/250*distancia(Bicho.xObservador,Bicho.yObservador,x1,y)),(int) -(distMax/250*distancia(Bicho.xObservador,Bicho.yObservador,x2,y))};
-        System.out.println(" y -> ");
+        
         for (int i = 0; i < arrayy.length; i++) {
             System.out.print(" "+arrayy[i]);
         }
@@ -66,6 +65,12 @@ public class Poligono {
         xVetorObjeto = x-Bicho.xObservador;
         yVetorObjeto = y - Bicho.yObservador;
         double angulo = anguloEntreVetores(xVetorObjeto, yVetorObjeto, xVetorObservador, yVetorObservador);
+        if (angulo < 0.0){
+            return  -1;
+        }
+        if(angulo >90.0){
+            return 401;
+        }
         return (int)((500.0/90.0)*angulo);
     }
     
