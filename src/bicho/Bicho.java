@@ -1,7 +1,7 @@
 package bicho;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.text.Position;
 
 public class Bicho {
     
@@ -32,13 +29,6 @@ public class Bicho {
             poligonos.add(p);
         }
         
-    }
-    
-    private static void drawSuperior(Graphics g){       
-        drawObservador(g);
-        for (Poligono poligono : poligonos) {
-            poligono.draw(g);
-        }
     }
     
     private static void drawObservador(Graphics g){
