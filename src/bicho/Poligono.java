@@ -1,7 +1,6 @@
 package bicho;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
 
 public class Poligono {
     public double x,y,tamanho,angulo;
@@ -45,9 +44,12 @@ public class Poligono {
         g.setColor(cor);
         g.drawLine( (int)x1, (int)y1, (int)x2, (int)y2);
         double anguloRad = Math.toRadians(angulo);
+        g.drawOval((int) x1 - 5, (int) y1 - 5, 10, 10);
+        g.drawOval((int) x2 - 10, (int) y2 - 10, 20, 20);
         g.setColor(Color.BLACK);
         g.drawString(cor.toString().substring(1),(int) x,(int) y);
         g.drawLine((int)x, (int)y, (int)(x+Math.cos(anguloRad)*20), (int)(y+Math.sin(anguloRad)*20));
+
     }
     
     public void DrawFrontal(Graphics g,int x,int y){
@@ -60,19 +62,19 @@ public class Poligono {
         x2Proj = (int)projetaXDoPontoNaTela(x2,y2);
         
         int[] arrayx = {x1Proj,x2Proj,x2Proj,x1Proj};
-        System.out.println("Poligono: x -> ");
+        /*System.out.println("Poligono: x -> ");
         for (int i = 0; i < arrayx.length; i++) {
             System.out.print(" "+arrayx[i]);
-        }
+        }*/
         
         double d1 = distancia(Bicho.xObservador,Bicho.yObservador,x1,y1);
         double d2 = distancia(Bicho.xObservador,Bicho.yObservador,x2,y2);
         int[] arrayy = {(int) (250 +(tamanho/d1)),(int) (250 + tamanho/d2),(int) (250 - tamanho/d2),(int) (250 - tamanho/d1)};
-        System.out.println(" y -> ");
+        /*System.out.println(" y -> ");
         for (int i = 0; i < arrayy.length; i++) {
             System.out.print(" "+arrayy[i]);
         }
-        System.out.println("");
+        System.out.println("");*/
         g.setColor(cor);
         g.fillPolygon(arrayx, arrayy ,4);
         
@@ -89,14 +91,14 @@ public class Poligono {
         xVetorObjeto = x-Bicho.xObservador;
         yVetorObjeto = y - Bicho.yObservador;
         double angulo = anguloEntreVetores(xVetorObjeto, yVetorObjeto, xVetorObservador, yVetorObservador);
-        System.out.println("angulo que foi calculado "+angulo);
+        //System.out.println("angulo que foi calculado "+angulo);
         if (xVetorObservador*yVetorObjeto - xVetorObjeto*yVetorObservador < 0){
             return  -1;
         }
         if(angulo >90.0){
             return 501;
         }
-        System.out.println("projecao calculada para um angulo de "+angulo+" = "+(int)((500.0/90.0)*angulo));
+        //System.out.println("projecao calculada para um angulo de "+angulo+" = "+(int)((500.0/90.0)*angulo));
         return (int)((500.0/90.0)*angulo);
     }
     

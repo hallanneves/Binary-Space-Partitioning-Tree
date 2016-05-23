@@ -1,10 +1,8 @@
 package bicho;
 
-import java.awt.Color;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Arvore {
     Arvore frente, tras;
@@ -14,22 +12,31 @@ public class Arvore {
         ArrayList<Poligono> arrayfrente,arraytras;
         arrayfrente = new ArrayList<>();
         arraytras = new ArrayList<>();
-        pivo = poligonos.get(new Random().nextInt(poligonos.size()));
+        pivo = poligonos.get(0);//new Random().nextInt(poligonos.size()));
         poligonos.remove(pivo);
         ArrayList<Poligono> novo = new ArrayList<>();
         for (Poligono p: poligonos) {
-            if(false){//pivo.equacao().temInterseccao(p.equacao())){
-                double xmin = Math.min(p.x1, p.x2);
-                double xmax = Math.max(p.x1, p.x2);
-                double ymin = Math.min(p.y1, p.y2);
-                double ymax = Math.max(p.y1, p.y2);
+            if (pivo.equacao().temInterseccao(p.equacao())) {
+                double xmin, xmax, ymin, ymax;
+                if (p.x1 >= p.x2) {
+                    xmax = p.x1;
+                    ymax = p.y1;
+                    xmin = p.x2;
+                    ymin = p.y2;
+                } else {
+                    xmax = p.x2;
+                    ymax = p.y2;
+                    xmin = p.x1;
+                    ymin = p.y1;
+                }
+
                 double xintersec = pivo.equacao().xInterseccao(p.equacao());
                 double yintersec = pivo.equacao().yInterseccao(p.equacao());
                 Poligono p1 = new Poligono(xmin, ymin, xintersec, yintersec, p.angulo, p.cor.darker());
                 Poligono p2 = new Poligono(xintersec, yintersec, xmax, ymax, p.angulo, p.cor.brighter());
                 novo.add(p1);
                 novo.add(p2);
-                System.out.println("Dividiu o poligono p = ("+p.x1+","+p.y1+")("+p.x2+","+p.y2+")");
+                System.out.println("Dividiu o poligono p = (" + p.x + "," + p.y + "angulo = " + p.angulo);
                 System.out.println("P1 = x1 = "+xmin+" y1 = "+ymin+" x2 = "+xintersec+" y2 = "+yintersec);
                 System.out.println("P2 = x1 = "+xintersec+" y1 = "+yintersec+" x2 = "+xmax+" y2 = "+ymax);
                 
