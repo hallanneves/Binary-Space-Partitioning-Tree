@@ -1,5 +1,6 @@
 package bicho;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -15,7 +16,30 @@ public class Arvore {
         arraytras = new ArrayList<>();
         pivo = poligonos.get(new Random().nextInt(poligonos.size()));
         poligonos.remove(pivo);
+        ArrayList<Poligono> novo = new ArrayList<>();
         for (Poligono p: poligonos) {
+            if(false){//pivo.equacao().temInterseccao(p.equacao())){
+                double xmin = Math.min(p.x1, p.x2);
+                double xmax = Math.max(p.x1, p.x2);
+                double ymin = Math.min(p.y1, p.y2);
+                double ymax = Math.max(p.y1, p.y2);
+                double xintersec = pivo.equacao().xInterseccao(p.equacao());
+                double yintersec = pivo.equacao().yInterseccao(p.equacao());
+                Poligono p1 = new Poligono(xmin, ymin, xintersec, yintersec, p.angulo, p.cor.darker());
+                Poligono p2 = new Poligono(xintersec, yintersec, xmax, ymax, p.angulo, p.cor.brighter());
+                novo.add(p1);
+                novo.add(p2);
+                System.out.println("Dividiu o poligono p = ("+p.x1+","+p.y1+")("+p.x2+","+p.y2+")");
+                System.out.println("P1 = x1 = "+xmin+" y1 = "+ymin+" x2 = "+xintersec+" y2 = "+yintersec);
+                System.out.println("P2 = x1 = "+xintersec+" y1 = "+yintersec+" x2 = "+xmax+" y2 = "+ymax);
+                
+            }else{
+                novo.add(p);
+            }
+        }
+        poligonos = novo;
+        for (Poligono p: poligonos) {
+            
             if(pivo.estaAFrente(p)){
                 arrayfrente.add(p);
             }else{

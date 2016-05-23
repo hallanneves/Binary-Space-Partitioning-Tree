@@ -21,8 +21,24 @@ public class Poligono {
         y2 = (y-Math.sin(anguloRad)*tamanho/2);
     }
     
+    public Poligono(double x1, double y1, double x2, double y2, double angulo, Color cor){
+        this.tamanho = Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-x1, 2));
+        this.cor = cor;
+        this.angulo = angulo;
+        this.x = (Math.min(x1, x2) + Math.max(x1, x2)) / 2;
+        this.y = (Math.min(y1, y2) + Math.max(y1, y2)) / 2;
+        this.x1 = x1;
+        this.x2 = x2;
+        this.y1 = y1;
+        this.y2 = y2;
+    }
+    
     public boolean estaAFrente(Poligono p){
         return (p.y-y)-Math.tan(Math.toRadians(angulo+90))*(p.x-x) > 0;
+    }
+    
+    public Reta equacao(){
+        return new Reta(this);
     }
 
     public void draw(Graphics g){

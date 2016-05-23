@@ -25,7 +25,7 @@ public class Bicho {
 
     private static void geraPoligonos(){
         poligonos = new ArrayList<>();
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 5; i++) {
             Random r = new Random();
             Color cor = new Color(0.3f+r.nextFloat()*0.5f,0.3f+r.nextFloat()*0.5f,0.3f+r.nextFloat()*0.5f);
             Poligono p = new Poligono(50+r.nextDouble()*400.0,50+r.nextDouble()*400.0f,25+r.nextDouble()*100,r.nextDouble()*360.0,cor);
@@ -56,6 +56,17 @@ public class Bicho {
         a.pivo.DrawFrontal(g,xObservador, yObservador);
         if(a.frente!= null){
             drawFrontalArvore(a.frente, g);
+        }
+    }
+    
+    private static void drawSuperiorArvore(Arvore a,Graphics g){
+        drawObservador(g);
+        if(a.tras!=null){
+            drawSuperiorArvore(a.tras, g);
+        }
+        a.pivo.draw(g);
+        if(a.frente!= null){
+            drawSuperiorArvore(a.frente, g);
         }
     }
     
@@ -91,7 +102,7 @@ public class Bicho {
             //Desenha a vista Superior
             gSup.setColor(Color.WHITE);
             gSup.fillRect(0, 0, 500, 500);
-            drawSuperior(gSup);
+            drawSuperiorArvore(arvore, gSup);
             //Desenha a vista Frontal
             gFront.setColor(Color.WHITE);
             gFront.fillRect(0, 0, 500, 500);
