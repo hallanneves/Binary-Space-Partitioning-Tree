@@ -35,7 +35,11 @@ public class Poligono {
     public boolean estaAFrente(Poligono p){
         return (p.y-y)-Math.tan(Math.toRadians(angulo+90))*(p.x-x) > 0;
     }
-    
+
+    public boolean estaAFrente(int x, int y) {
+        return (y - this.y) - Math.tan(Math.toRadians(angulo + 90)) * (x - this.x) > 0;
+    }
+
     public Reta equacao(){
         return new Reta(this);
     }

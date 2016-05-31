@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,16 +22,16 @@ public class Bicho {
 
     private static void geraPoligonos(){
         poligonos = new ArrayList<>();
-       /* for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             Random r = new Random();
             Color cor = new Color(0.3f+r.nextFloat()*0.5f,0.3f+r.nextFloat()*0.5f,0.3f+r.nextFloat()*0.5f);
             Poligono p = new Poligono(50+r.nextDouble()*400.0,50+r.nextDouble()*400.0f,25+r.nextDouble()*100,r.nextDouble()*360.0,cor);
             poligonos.add(p);
-        }*/
-        poligonos.add(new Poligono(200, 200, 150, 95, Color.blue));
+        }
+        /*poligonos.add(new Poligono(200, 200, 150, 95, Color.blue));
         poligonos.add(new Poligono(300, 230, 150, 0, Color.red));
         poligonos.add(new Poligono(200, 100, 150, 30, Color.green));
-
+        */
 
         
     }
@@ -42,17 +43,27 @@ public class Bicho {
         g.drawLine(xObservador, yObservador, (int) (xObservador+100*Math.cos(Math.toRadians((double)(anguloObservador+45)))), (int) (yObservador+100*Math.sin(Math.toRadians((double)(anguloObservador+45)))));
 
     }
-        
-    private static void drawFrontalArvore(Arvore a,Graphics g){
-        if(a.tras!=null){
-            drawFrontalArvore(a.tras,g);
-        }
-        a.pivo.DrawFrontal(g,xObservador, yObservador);
-        if(a.frente!= null){
-            drawFrontalArvore(a.frente, g);
+
+    private static void drawFrontalArvore(Arvore a, Graphics g) {
+        if (a.pivo.estaAFrente(xObservador, yObservador)) {
+            if (a.tras != null) {
+                drawFrontalArvore(a.tras, g);
+            }
+            a.pivo.DrawFrontal(g, xObservador, yObservador);
+            if (a.frente != null) {
+                drawFrontalArvore(a.frente, g);
+            }
+        } else {
+            if (a.frente != null) {
+                drawFrontalArvore(a.frente, g);
+            }
+            a.pivo.DrawFrontal(g, xObservador, yObservador);
+            if (a.tras != null) {
+                drawFrontalArvore(a.tras, g);
+            }
         }
     }
-    
+
     private static void drawSuperiorArvore(Arvore a,Graphics g){
         drawObservador(g);
         if(a.tras!=null){
