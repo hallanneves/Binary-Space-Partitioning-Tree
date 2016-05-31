@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="418b8e13-73c9-486e-8665-8a981893f430" name="Default" comment="Agora detector de interseccao funciona">
+    <list default="true" id="418b8e13-73c9-486e-8665-8a981893f430" name="Default" comment="Funcioando">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bicho/Bicho.java" afterPath="$PROJECT_DIR$/src/bicho/Bicho.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bicho/Poligono.java" afterPath="$PROJECT_DIR$/src/bicho/Poligono.java" />
     </list>
     <ignored path="Binary-Space-Partitioning-Tree.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,9 +30,9 @@
             <state relative-caret-position="472">
               <caret line="51" column="57" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
               <folding>
-                <element signature="e#1218#1219#0" expanded="true" />
-                <element signature="e#1302#1303#0" expanded="true" />
-                <marker date="1464708993000" expanded="false" signature="23:34" ph="..." />
+                <element signature="e#1219#1220#0" expanded="true" />
+                <element signature="e#1313#1314#0" expanded="true" />
+                <marker date="1464709281000" expanded="false" signature="23:34" ph="..." />
               </folding>
             </state>
           </provider>
@@ -280,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1464029372447</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Funcioando">
+      <created>1464709287784</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1464709287784</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -343,7 +348,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Tira funcao que nao estava sendo usada" />
     <MESSAGE value="Agora detector de interseccao funciona" />
-    <option name="LAST_COMMIT_MESSAGE" value="Agora detector de interseccao funciona" />
+    <MESSAGE value="Funcioando" />
+    <option name="LAST_COMMIT_MESSAGE" value="Funcioando" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -359,9 +365,9 @@
         <state relative-caret-position="705">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding>
-            <element signature="e#1218#1219#0" expanded="true" />
-            <element signature="e#1302#1303#0" expanded="true" />
-            <marker date="1464708993000" expanded="false" signature="23:34" ph="..." />
+            <element signature="e#1219#1220#0" expanded="true" />
+            <element signature="e#1313#1314#0" expanded="true" />
+            <marker date="1464709281000" expanded="false" signature="23:34" ph="..." />
           </folding>
         </state>
       </provider>
@@ -405,9 +411,9 @@
         <state relative-caret-position="705">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
           <folding>
-            <element signature="e#1218#1219#0" expanded="true" />
-            <element signature="e#1302#1303#0" expanded="true" />
-            <marker date="1464708993000" expanded="false" signature="23:34" ph="..." />
+            <element signature="e#1219#1220#0" expanded="true" />
+            <element signature="e#1313#1314#0" expanded="true" />
+            <marker date="1464709281000" expanded="false" signature="23:34" ph="..." />
           </folding>
         </state>
       </provider>
@@ -451,9 +457,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1218#1219#0" expanded="true" />
-            <element signature="e#1302#1303#0" expanded="true" />
-            <marker date="1464708993000" expanded="false" signature="23:34" ph="..." />
+            <element signature="e#1219#1220#0" expanded="true" />
+            <element signature="e#1313#1314#0" expanded="true" />
+            <marker date="1464709281000" expanded="false" signature="23:34" ph="..." />
           </folding>
         </state>
       </provider>
@@ -471,9 +477,9 @@
         <state relative-caret-position="255">
           <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
           <folding>
-            <element signature="e#1218#1219#0" expanded="true" />
-            <element signature="e#1302#1303#0" expanded="true" />
-            <marker date="1464708993000" expanded="false" signature="23:34" ph="..." />
+            <element signature="e#1219#1220#0" expanded="true" />
+            <element signature="e#1313#1314#0" expanded="true" />
+            <marker date="1464709281000" expanded="false" signature="23:34" ph="..." />
           </folding>
         </state>
       </provider>
@@ -509,9 +515,9 @@
         <state relative-caret-position="472">
           <caret line="51" column="57" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
           <folding>
-            <element signature="e#1218#1219#0" expanded="true" />
-            <element signature="e#1302#1303#0" expanded="true" />
-            <marker date="1464708993000" expanded="false" signature="23:34" ph="..." />
+            <element signature="e#1219#1220#0" expanded="true" />
+            <element signature="e#1313#1314#0" expanded="true" />
+            <marker date="1464709281000" expanded="false" signature="23:34" ph="..." />
           </folding>
         </state>
       </provider>
