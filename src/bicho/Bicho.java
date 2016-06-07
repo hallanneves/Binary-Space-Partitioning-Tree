@@ -11,6 +11,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class Bicho {
     
     static ArrayList<Poligono> poligonos; 
@@ -130,22 +131,31 @@ public class Bicho {
                     Logger.getLogger(Bicho.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
-            if (ke.getKeyChar() == 'a')
-                xObservador-=10;
-            if(ke.getKeyChar() == 'd')
-                xObservador+=10;
-            if(ke.getKeyChar() == 'w')
-                yObservador-=10;
-            if(ke.getKeyChar() == 's')
-                yObservador+=10;
+
+            double passo = 10.0;
+            if (ke.getKeyChar() == 'a') {
+                xObservador += Math.cos(Math.toRadians(anguloObservador - 90)) * passo;
+                yObservador += Math.sin(Math.toRadians(anguloObservador - 90)) * passo;
+            }
+            if (ke.getKeyChar() == 'd') {
+                xObservador += Math.cos(Math.toRadians(anguloObservador + 90)) * passo;
+                yObservador += Math.sin(Math.toRadians(anguloObservador + 90)) * passo;
+            }
+            if (ke.getKeyChar() == 'w') {
+                xObservador += Math.cos(Math.toRadians(anguloObservador)) * passo;
+                yObservador += Math.sin(Math.toRadians(anguloObservador)) * passo;
+            }
+            if (ke.getKeyChar() == 's') {
+                xObservador += Math.cos(Math.toRadians(anguloObservador + 180)) * passo;
+                yObservador += Math.sin(Math.toRadians(anguloObservador + 180)) * passo;
+            }
             if (ke.getKeyChar() == 'q'){
                 anguloObservador -=10;
             }
             if (ke.getKeyChar() == 'e'){
                 anguloObservador +=10;
             }
-            System.out.println();
+            System.out.println(anguloObservador);
         }
 
         @Override
