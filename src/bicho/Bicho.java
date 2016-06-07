@@ -121,6 +121,8 @@ public class Bicho {
             //Desenha a vista Frontal
             gFront.setColor(Color.WHITE);
             gFront.fillRect(0, 0, 500, 500);
+            gFront.setColor(Color.LIGHT_GRAY);
+            gFront.fillRect(0,260,500,500);
             drawFrontalArvore(arvore, gFront);
             gPainelSup.drawImage(imgSup,0,0,null);
             gPainelFront.drawImage(imgFront,0,0,null);
