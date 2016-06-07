@@ -87,8 +87,12 @@ public class Poligono {
             System.out.print(" "+arrayx[i]);
         }*/
 
-        double d1 = distancia(Bicho.xObservador, Bicho.yObservador, pontos[0].getX(), pontos[0].getY());
-        double d2 = distancia(Bicho.xObservador, Bicho.yObservador, pontos[1].getX(), pontos[1].getY());
+        //double d1 = distancia(Bicho.xObservador, Bicho.yObservador, pontos[0].getX(), pontos[0].getY());
+        //double d2 = distancia(Bicho.xObservador, Bicho.yObservador, pontos[1].getX(), pontos[1].getY());
+        double angulo = Math.toRadians(Bicho.anguloObservador + 90);
+        Line2D linhaParalela = new Line2D.Double(Bicho.xObservador - Math.cos(angulo) * 100, Bicho.yObservador - Math.sin(angulo) * 100.0, Bicho.xObservador + Math.cos(angulo) * 100, Bicho.yObservador + Math.sin(angulo) * 100);
+        double d1 = linhaParalela.ptLineDist(pontos[0]);
+        double d2 = linhaParalela.ptLineDist(pontos[1]);
         int[] arrayy = {(int) (250 +(tamanho/d1)),(int) (250 + tamanho/d2),(int) (250 - tamanho/d2),(int) (250 - tamanho/d1)};
         /*System.out.println(" y -> ");
         for (int i = 0; i < arrayy.length; i++) {
