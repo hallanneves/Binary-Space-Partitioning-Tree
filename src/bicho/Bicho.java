@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.Line2D;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -83,7 +84,7 @@ public class Bicho {
         painelSuperior = new JPanel();
         painelFrontal = new JPanel();
         frame.setLayout(null);
-        frame.setSize(1100, 600);
+        frame.setSize(1045, 560);
         painelSuperior.setBounds(10, 10, 510, 510);
         frame.add(painelSuperior);
         frame.addKeyListener(new tratador());
@@ -97,9 +98,15 @@ public class Bicho {
     public static void main(String[] args) throws InterruptedException, IOException, Exception {
         inicializaJanela();
         geraPoligonos();
-        
-        Graphics gSup = painelSuperior.getGraphics();
-        Graphics gFront = painelFrontal.getGraphics();
+
+        BufferedImage imgSup = new BufferedImage(500,500,BufferedImage.TYPE_INT_ARGB);
+        BufferedImage imgFront = new BufferedImage(500,500,BufferedImage.TYPE_INT_ARGB);
+
+        Graphics gSup = imgSup.getGraphics();
+        Graphics gFront = imgFront.getGraphics();
+
+        Graphics gPainelSup = painelSuperior.getGraphics();
+        Graphics gPainelFront = painelFrontal.getGraphics();
         
         //Gera o teste inicial
         arvore = new Arvore((ArrayList<Poligono>)poligonos.clone());
@@ -115,7 +122,8 @@ public class Bicho {
             gFront.setColor(Color.WHITE);
             gFront.fillRect(0, 0, 500, 500);
             drawFrontalArvore(arvore, gFront);
-            
+            gPainelSup.drawImage(imgSup,0,0,null);
+            gPainelFront.drawImage(imgFront,0,0,null);
             Thread.sleep(200);
         }
     }
