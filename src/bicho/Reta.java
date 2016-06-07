@@ -32,7 +32,7 @@ public class Reta {
     }
 
 
-    public Point2D.Double getIntersectionPoint(Line2D line1, Line2D line2) {
+    public static Point2D.Double getIntersectionPoint(Line2D line1, Line2D line2) {
         if (!line1.intersectsLine(line2)) return null;
         double px = line1.getX1(),
                 py = line1.getY1(),

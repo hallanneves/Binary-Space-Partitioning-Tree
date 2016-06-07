@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.Line2D;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -20,10 +21,11 @@ public class Bicho {
     public static JFrame frame;
     public static JPanel painelFrontal, painelSuperior;
     public static int xObservador=250 ,yObservador=550,anguloObservador=270;
+    public static Line2D limiteVisaoDireita, limiteVisaoEsquerda;
 
     private static void geraPoligonos(){
         poligonos = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             Random r = new Random();
             Color cor = new Color(0.3f+r.nextFloat()*0.5f,0.3f+r.nextFloat()*0.5f,0.3f+r.nextFloat()*0.5f);
             Poligono p = new Poligono(50+r.nextDouble()*400.0,50+r.nextDouble()*400.0f,25+r.nextDouble()*100,r.nextDouble()*360.0,cor);
@@ -45,7 +47,7 @@ public class Bicho {
 
     }
 
-    private static void drawFrontalArvore(Arvore a, Graphics g) {
+    private static void drawFrontalArvore(Arvore a, Graphics g) throws Exception {
         if (a.pivo.estaAFrente(xObservador, yObservador)) {
             if (a.tras != null) {
                 drawFrontalArvore(a.tras, g);
@@ -91,8 +93,8 @@ public class Bicho {
         frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         
     }
-    
-    public static void main(String[] args) throws InterruptedException, IOException {
+
+    public static void main(String[] args) throws InterruptedException, IOException, Exception {
         inicializaJanela();
         geraPoligonos();
         
